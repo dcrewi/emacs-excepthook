@@ -83,7 +83,7 @@ def _elispSexpr(items, strs):
 
 def excepthook_impl(type, value, tb):
     shadowedHook(type, value, tb)
-    s = [Symbol('pyexcepthook'),
+    s = [Symbol('pyexcepthook-handler'),
          type.__name__,
          str(value),
          [Symbol('list')] + \
