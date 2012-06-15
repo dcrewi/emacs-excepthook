@@ -87,6 +87,6 @@ def excepthook_impl(type, value, tb):
          type.__name__,
          str(value),
          [Symbol('list')] + \
-         [[Symbol('list'), filename, line_no, fnc_name, text]
-          for (filename, line_no, fnc_name, text) in traceback.extract_tb(tb)]]
+         [[Symbol('list'), filename, line_no, fnc_name, line]
+          for (filename, line_no, fnc_name, line) in traceback.extract_tb(tb)]]
     subprocess.call(['emacsclient', '-e', elispSexpr(s)])
