@@ -20,7 +20,10 @@
 ; WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 (defun pyexcepthook-handler (type value stack-frames)
-  (let ((buffer (get-buffer-create "*python-exception*")))
+  (let ((buffer (get-buffer-create "*python-exception*"))
+	(exc-msg (concat type (if (zerop (length value))
+			        ""
+				(concat ": " value)))))
     (set-buffer buffer)
     (setq buffer-read-only nil)
     (erase-buffer)
@@ -40,16 +43,17 @@
 	     'follow-link t
 	     'filename filename
 	     'line-no line-no
+	     'exc-msg exc-msg
 	     'action
 	     (lambda (btn)
 	       (find-file (button-get btn 'filename))
 	       (goto-char 0)
-	       (forward-line (- (button-get btn 'line-no) 1))))
+	       (forward-line (- (button-get btn 'line-no) 1))
+	       (message (button-get btn 'exc-msg))))
 	  (insert text))))
-    (insert type)
-    (if (not (zerop (length value))) (progn (insert ": ") (insert value)))
+    (insert exc-msg)
     (insert "\n")
     (set-buffer-modified-p nil)
     (setq buffer-read-only t)
     (switch-to-buffer buffer)
-    t))
+    nil))
