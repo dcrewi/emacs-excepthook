@@ -8,6 +8,6 @@ Installation
 
 1. The exception data is sent from python to emacs through emacsclient. Read `man emacsclient` to see how to set up emacs as an edit server. You can use `emacsclient -e '(message "it works")'` to test whether the emacs server is functioning.
 
-2. Put `pyexcepthook-handler.el` in your elisp load path. (Or symlink it to the copy in your git repo.) Add  to your `~/.emacs` the line `(load "pyexcepthook-handler")`.
+2. Put `pyexcepthook-handler.el` in your elisp load path. (Or symlink it to the copy in your git repo.) Add  to your `~/.emacs` the line `(autoload 'pyexcepthook-handler "pyexcepthook-handler")`.
 
 3. Put `emacs_excepthook.py` in your python module search path. (Or symlink it to the copy in your git repo.) If it does not exist, create the file `usercustomize.py` in your python module search path. Add to it the two lines `import emacs_excepthook` and `emacs_excepthook.install()`.
