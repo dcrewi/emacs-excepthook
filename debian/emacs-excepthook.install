@@ -1,0 +1,2 @@
+pyexcepthook-handler.el usr/share/emacs/site-lisp/emacs-excepthook/
+emacs_excepthook.py emacs_excepthook.pth usr/share/pyshared/

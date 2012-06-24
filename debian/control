@@ -1,0 +1,14 @@
+Source: emacs-excepthook
+Section: unknown
+Priority: extra
+Maintainer: David Creswick <dmc@gyrae.net>
+Build-Depends: debhelper (>= 7.0.50~), python, python-support (>= 0.5.3)
+Standards-Version: 3.8.4
+Homepage: https://github.com/dcrewi/emacs-excepthook
+
+Package: emacs-excepthook
+Architecture: all
+XB-Python-Version: ${python:Versions}
+Depends: ${misc:Depends}, emacsen, ${python:Depends}
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
